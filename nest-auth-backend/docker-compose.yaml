@@ -1,0 +1,25 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:13.1
+    container_name: nestjs-auth
+    restart: always
+    environment:
+      POSTGRES_USER: hadil
+      POSTGRES_PASSWORD: hadil123
+      POSTGRES_DB: nestjs-auth-db
+    volumes:
+      - nestjs_auth_db:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+
+  adminer:
+    image: adminer
+    container_name: nestjs-auth-adminer
+    restart: always
+    ports:
+      - 8080:8080
+
+volumes:
+  nestjs_auth_db:
